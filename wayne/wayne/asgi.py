@@ -1,5 +1,5 @@
 """
-ASGI config for projeto_wayne project.
+ASGI config for wayne project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'projeto_wayne.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'wayne.settings')
 
 application = get_asgi_application()
