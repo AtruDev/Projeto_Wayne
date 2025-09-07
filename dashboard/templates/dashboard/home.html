@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Bem-vindo ao Dashboard, {{ user.username }}!</h1>
+    <p>Seu papel: {{ user.get_role_display }}</p>
+    <p>Aqui vamos mostrar os recursos e estatisticas</p>
+{% endblock %}

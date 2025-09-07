@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Recursos</h1>
+<a href="{% url 'criar_recurso' %}">+ Adicionar Recurso</a>
+<ul>
+    {% for r in recursos %}
+    <li>
+        {{ r.nome }} ({{r.tipo}})
+        <a href="{% url 'editar_recurso' r.id %}">Editar</a>
+        <a href="{% url 'deletar_recurso' r.id %}">Excluir</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
