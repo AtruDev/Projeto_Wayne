@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Novo Recurso</h1>
+<form method="post">
+  {% csrf_token %}
+  <input type="text" name="nome" placeholder="Nome"><br>
+  <input type="text" name="tipo" placeholder="Tipo"><br>
+  <textarea name="descricao" placeholder="Descrição"></textarea><br>
+  <button type="submit">Salvar</button>
+</form>
+{% endblock %}
