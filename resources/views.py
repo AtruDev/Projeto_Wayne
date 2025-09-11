@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Resource
-
+from users.decorators import role_required
 
 @login_required
 def listar_recursos(request):
     recursos = Resource.objects.all()
     return render(request, "resources/listar.html", {"recursos" : recursos})
 
-@login_required
+@role_required(['gerente', 'admin'])
 def criar_recurso(request):
     if request.method == "POST":
         nome = request.POST.get("nome")
@@ -18,7 +18,7 @@ def criar_recurso(request):
         return redirect("listar_recursos")
     return render(request, "resources/criar.html")
 
-@login_required
+@role_required(['gerente', 'admin'])
 def editar_recurso(request, id):
     recurso = get_object_or_404(Resource, id=id)
     if request.method == "POST":
@@ -29,7 +29,7 @@ def editar_recurso(request, id):
         return redirect("listar_recursos")
     return render(request, "resources/editar.html", {"recurso": recurso})
 
-@login_required
+@role_required(['admin'])
 def deletar_recurso(request, id):
     recurso = get_object_or_404(Resource, id=id)
     if request.method == "Post":

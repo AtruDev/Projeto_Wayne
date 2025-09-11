@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Recursos</h1>
+
+{% if user.role == 'gerente' or user.role == 'admin' %}
 <a href="{% url 'criar_recurso' %}">+ Adicionar Recurso</a>
+{% endif %} 
+
 <ul>
     {% for r in recursos %}
-    <li>
-        {{ r.nome }} ({{r.tipo}})
-        <a href="{% url 'editar_recurso' r.id %}">Editar</a>
-        <a href="{% url 'deletar_recurso' r.id %}">Excluir</a>
-    </li>
+        <li>
+            {{ r.nome }} ({{r.tipo}})
+            {% if user.role == 'gerente' or user.role == 'admin' %}
+                <a href="{% url 'editar_recurso' r.id %}">Editar</a>
+            {% endif %}
+            {% if user.role == 'admin' %}
+                <a href="{% url 'deletar_recurso' r.id %}">Excluir</a>
+            {% endif %}
+        </li>
     {% endfor %}
 </ul>
 {% endblock %}
