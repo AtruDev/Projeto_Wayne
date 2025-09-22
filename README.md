@@ -22,3 +22,22 @@ cd projeto-wayne
 ```
 
 ### 2. Criara e ativar o ambiente virtual
+- python -m venv venv
+- venv\Scripts\activate    # Windows
+- source venv/bin/activate # Linux/macOS
+
+### 3. Instalar dependências
+- pip install -r requirements.txt
+
+### 4. Rodar migrações
+
+- python manage.py migrate
+
+### 5. Criar superusuário
+- python manage.py createsuperuser
+
+### 6. Subir o servidor
+- python manage.py runserver
+
+### Acesse:
+http://127.0.0.1:8000/

@@ -1,0 +1,59 @@
+[
+{
+  "model": "users.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$vQSP1lArXgeQiG9Ssbzx7z$t/5/5QS5rkBIg+fwnc7zcXGNIKiQiEUqRgn1+6d7IK0=",
+    "last_login": "2025-09-07T01:59:05.671Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-09-06T20:28:00Z",
+    "role": "admin",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$pTKOCyciNSqJ5XUWP9obLJ$ZHfyg7lQfwSRXY5SeoO0wxt6C18v5ZVJiZtqwBMUhtE=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "lucius",
+    "first_name": "",
+    "last_name": "",
+    "email": "lucius@wayne.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-13T04:22:30.181Z",
+    "role": "gerente",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$OIW3wxUE93sZd6kWjkByTR$Q4ZFvxmya3z4LOqj8Mn4S7OlmGgnmNHxD1F9edCh4MY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "alfred",
+    "first_name": "",
+    "last_name": "",
+    "email": "alfred@wayne.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-13T04:22:37.633Z",
+    "role": "funcionario",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
