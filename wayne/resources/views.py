@@ -1,38 +1,35 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
 from .models import Resource
-from users.decorators import role_required
+from .forms import ResourceForm
 
-@login_required
 def listar_recursos(request):
     recursos = Resource.objects.all()
-    return render(request, "resources/listar.html", {"recursos" : recursos})
+    return render(request, 'resources/listar.html', {'recursos': recursos})
 
-@role_required(['gerente', 'admin'])
 def criar_recurso(request):
-    if request.method == "POST":
-        nome = request.POST.get("nome")
-        tipo = request.POST.get("tipo")
-        descricao = request.POST.get("descricao")
-        Resource.objects.create(nome=nome, tipo=tipo, descricao=descricao)
-        return redirect("listar_recursos")
-    return render(request, "resources/criar.html")
+    if request.method == 'POST':
+        form = ResourceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("resources:listar_recursos")
+    else:
+        form = ResourceForm()
+    return render(request, 'resources/form.html', {'form': form, "acao":"Criar"})
 
-@role_required(['gerente', 'admin'])
-def editar_recurso(request, id):
-    recurso = get_object_or_404(Resource, id=id)
-    if request.method == "POST":
-        recurso.nome = request.POST.get("nome")
-        recurso.tipo = request.POST.get("tipo")
-        recurso.descricao = request.POST.get("descricao")
-        recurso.save()
-        return redirect("listar_recursos")
-    return render(request, "resources/editar.html", {"recurso": recurso})
+def editar_recurso(request, pk):
+    recurso = get_object_or_404(Resource, pk=pk)
+    if request.method == 'POST':
+        form = ResourceForm(request.POST, instance=recurso)
+        if form.is_valid():
+            form.save()
+            return redirect("resources:listar_recursos")
+    else:
+        form = ResourceForm(instance=recurso)
+    return render(request, 'resources/form.html', {'form': form,"acao":"Editar"})
 
-@role_required(['admin'])
-def deletar_recurso(request, id):
-    recurso = get_object_or_404(Resource, id=id)
-    if request.method == "Post":
+def deletar_recurso(request, pk):
+    recurso = get_object_or_404(Resource, pk=pk)
+    if request.method == 'POST':
         recurso.delete()
-        return redirect("listar+recursos")
-    return render(request, "resources/deletar.html", {"recurso": recurso})
+        return redirect("resources:listar_recursos")
+    return render(request, 'resources/deletar.html', {'recurso': recurso})

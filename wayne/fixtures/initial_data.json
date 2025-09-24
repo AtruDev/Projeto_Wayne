@@ -1,0 +1,81 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "username": "admin",
+      "email": "admin@wayne.com",
+      "password": "pbkdf2_sha256$1000000$kTvxPRIs8WtXJE5OpJ4wcM$DoMauhtTYcJKuyIRBFHuNvgoJQL8Cq1TzjXcGut1dLg=",
+      "role": "admin",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "username": "lucius",
+      "email": "lucius@wayne.com",
+      "password": "pbkdf2_sha256$1000000$kTvxPRIs8WtXJE5OpJ4wcM$DoMauhtTYcJKuyIRBFHuNvgoJQL8Cq1TzjXcGut1dLg=",
+      "role": "gerente",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "username": "alfred",
+      "email": "alfred@wayne.com",
+      "password": "pbkdf2_sha256$1000000$kTvxPRIs8WtXJE5OpJ4wcM$DoMauhtTYcJKuyIRBFHuNvgoJQL8Cq1TzjXcGut1dLg=",
+      "role": "funcionario",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true
+    }
+  },
+  {
+    "model": "resources.resource",
+    "pk": 1,
+    "fields": {
+      "nome": "Batmóvel",
+      "tipo": "Veículo",
+      "descricao": "Carro blindado de alta performance",
+      "criado_em": "2025-09-13T00:00:00Z"
+    }
+  },
+  {
+    "model": "resources.resource",
+    "pk": 2,
+    "fields": {
+      "nome": "Batpod",
+      "tipo": "Veículo",
+      "descricao": "Motocicleta de alta velocidade usada pelo Batman",
+      "criado_em": "2025-09-13T00:00:00Z"
+    }
+  },
+  {
+    "model": "resources.resource",
+    "pk": 3,
+    "fields": {
+      "nome": "Servidor Central",
+      "tipo": "Equipamento",
+      "descricao": "Controle de dados da Wayne Enterprises",
+      "criado_em": "2025-09-13T00:00:00Z"
+    }
+  },
+  {
+    "model": "resources.resource",
+    "pk": 4,
+    "fields": {
+      "nome": "Batarang",
+      "tipo": "Dispositivo",
+      "descricao": "Arma de arremesso do Batman",
+      "criado_em": "2025-09-13T00:00:00Z"
+    }
+  }
+]

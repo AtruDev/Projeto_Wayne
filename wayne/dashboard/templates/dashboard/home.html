@@ -1,41 +1,117 @@
 {% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
 
 {% block content %}
-    <h1>Dashboard</h1>
+<div class="container-fluid">
+  <h2 class="mb-4">📊 Dashboard Wayne Enterprises</h2>
 
-    <h2>Usuários</h2>
-    <ul>
-        <li>Total: {{ total_usuarios }}</li>
-        <li>Funcionários: {{ total_funcionarios }}</li>
-        <li>Gerentes: {{ total_gerentes }}</li>
-        <li>Administradores: {{ total_admins }}</li>
-    </ul>
+  <!-- Cards Resumo -->
+  <div class="row g-3">
+    <div class="col-md-6 col-lg-3">
+      <div class="card shadow-sm border-0 bg-primary text-white text-center h-100">
+        <div class="card-body">
+          <h5 class="card-title">👥 Usuários</h5>
+          <p class="display-5 fw-bold">{{ total_usuarios }}</p>
+          <small>Total cadastrado</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="card shadow-sm border-0 bg-success text-white text-center h-100">
+        <div class="card-body">
+          <h5 class="card-title">📦 Recursos</h5>
+          <p class="display-5 fw-bold">{{ total_recursos }}</p>
+          <small>Total cadastrado</small>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <h2>Recursos</h2>
-    <p>Total de recursos cadastrados: {{ total_recursos }}</p>
+  <!-- Gráficos -->
+  <div class="row mt-4">
+    <div class="col-lg-6">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">📊 Recursos por Tipo</h5>
+          <canvas id="barChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">🍩 Distribuição de Recursos</h5>
+          <canvas id="pieChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <canvas id="graficoRecursos" width="400" height="200"></canvas>
+  <!-- Últimos registros -->
+  <div class="row mt-4">
+    <div class="col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">🆕 Últimos Usuários</h5>
+          <ul class="list-group list-group-flush">
+            {% for usuario in ultimos_usuarios %}
+              <li class="list-group-item">
+                <strong>{{ usuario.username }}</strong> — {{ usuario.role }}
+              </li>
+            {% empty %}
+              <li class="list-group-item text-muted">Nenhum usuário cadastrado ainda.</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">🆕 Últimos Recursos</h5>
+          <ul class="list-group list-group-flush">
+            {% for recurso in ultimos_recursos %}
+              <li class="list-group-item">
+                <strong>{{ recurso.nome }}</strong> — {{ recurso.tipo }}
+              </li>
+            {% empty %}
+              <li class="list-group-item text-muted">Nenhum recurso cadastrado ainda.</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const ctx = document.getElementById('graficoRecursos');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: {{ tipos|safe }},
-                datasets: [{
-                    label: 'Quantidade de Recursos por Tipo',
-                    data: {{ quantidades|safe }},
-                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: { beginAtZero: true }
-        }
-      }
-    });
-  </script>    
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Gráfico de barras
+  new Chart(document.getElementById("barChart"), {
+    type: "bar",
+    data: {
+      labels: {{ tipos|safe }},
+      datasets: [{
+        label: "Quantidade",
+        data: {{ quantidades|safe }},
+        backgroundColor: ['#0d6efd','#198754','#dc3545','#ffc107','#6610f2']
+      }]
+    },
+    options: { responsive: true, plugins: { legend: { display: false } } }
+  });
+
+  // Gráfico de pizza
+  new Chart(document.getElementById("pieChart"), {
+    type: "pie",
+    data: {
+      labels: {{ tipos|safe }},
+      datasets: [{
+        data: {{ quantidades|safe }},
+        backgroundColor: ['#0d6efd','#198754','#dc3545','#ffc107','#6610f2']
+      }]
+    },
+    options: { responsive: true }
+  });
+</script>
 {% endblock %}

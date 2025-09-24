@@ -3,5 +3,5 @@ from .models import Resource
 
 @admin.register(Resource)
 class ResourceAdmin(admin.ModelAdmin):
-    list_display = ("nome", "tipo", "criado_em")
+    list_display = ("nome", "tipo", "descricao")
     search_fields = ("nome", "tipo")

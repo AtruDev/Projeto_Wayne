@@ -1,22 +1,47 @@
 {% extends "base.html" %}
+{% block title %}Lista de Recursos{% endblock %}
+
 {% block content %}
-<h1>Recursos</h1>
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>📦 Recursos</h2>
+    <a href="{% url 'resources:criar_recursos' %}" class="btn btn-success">
+      ➕ Novo Recurso
+    </a>
+  </div>
 
-{% if user.role == 'gerente' or user.role == 'admin' %}
-<a href="{% url 'criar_recurso' %}">+ Adicionar Recurso</a>
-{% endif %} 
-
-<ul>
-    {% for r in recursos %}
-        <li>
-            {{ r.nome }} ({{r.tipo}})
-            {% if user.role == 'gerente' or user.role == 'admin' %}
-                <a href="{% url 'editar_recurso' r.id %}">Editar</a>
-            {% endif %}
-            {% if user.role == 'admin' %}
-                <a href="{% url 'deletar_recurso' r.id %}">Excluir</a>
-            {% endif %}
-        </li>
-    {% endfor %}
-</ul>
+  {% if recursos %}
+    <div class="card shadow">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Descrição</th>
+              <th>Criado em</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for recurso in recursos %}
+              <tr>
+                <td>{{ recurso.id }}</td>
+                <td>{{ recurso.nome }}</td>
+                <td>{{ recurso.descricao }}</td>
+                <td>{{ recurso.criado_em|date:"d/m/Y H:i" }}</td>
+                <td>
+                  <a href="{% url 'resources:editar_recursos' recurso.id %}" class="btn btn-sm btn-warning">✏️ Editar</a>
+                  <a href="{% url 'resources:deletar_recursos' recurso.id %}" class="btn btn-sm btn-danger">🗑️ Deletar</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {% else %}
+    <p class="text-muted">Nenhum recurso cadastrado.</p>
+  {% endif %}
+</div>
 {% endblock %}
