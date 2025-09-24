@@ -18,7 +18,7 @@ class User(AbstractUser):
         choices = ROLE_CHOICES,
         default = ROLE_FUNC 
     )
-    criado_em = models.DateTimeField(auto_now_add=True, default=timezone.now)
+    criado_em = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.username} ({self.get_role_display()})"

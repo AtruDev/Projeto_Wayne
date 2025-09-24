@@ -5,7 +5,7 @@ app_name = "users"
 
 urlpatterns = [
     path("", views.listar_usuarios, name="listar_usuarios"),
-    path("create/", views.criar_usuario, name="criar_usuario"),
-    path("<int:pk>/edit/", views.editar_usuario, name="editar_usuario"),
-    path("<int:pk>/delete/", views.deletar_usuario, name="deletar_usuario"),
+    path("criar/", views.criar_usuario, name="criar_usuario"),
+    path("<int:user_id>/editar/", views.editar_usuario, name="editar_usuario"),
+    path("<int:user_id>/deletar/", views.deletar_usuario, name="deletar_usuario"),
 ]

@@ -1,25 +1,48 @@
-#  Sistema de Gestão Wayne Enterprises
+# 🦇 Projeto Wayne Enterprises
 
-Projeto desenvolvido em Django para gerenciamento de **recursos internos** das Indústrias Wayne.  
-Inclui autenticação de usuários com papéis (funcionário, gerente e admin), dashboard com estatísticas e CRUD de recursos.
-
----
-
-##  Tecnologias usadas
-- Python 3.13
-- Django 5.2
-- SQLite (banco de dados padrão)
-- Chart.js (para gráficos no dashboard)
+Sistema desenvolvido em **Django** para gerenciamento de recursos e usuários, com autenticação e painel administrativo (dashboard).
 
 ---
 
-##  Como rodar o projeto
+## 📌 Funcionalidades
 
-### 1. Clonar o repositório
-```bash
-git clone https://github.com/seu-usuario/projeto-wayne.git
-cd projeto-wayne
-```
+- 🔐 **Autenticação de usuários**
+  - Login e logout seguros
+  - Controle de permissões por papel (`admin`, `user`)
+
+- 📦 **Gestão de Recursos**
+  - Criar, listar, editar e deletar recursos
+  - Registro de data/hora de criação
+
+- 👥 **Gestão de Usuários**
+  - Cadastro, listagem, edição e exclusão de usuários
+  - Apenas administradores podem gerenciar usuários
+
+- 📊 **Dashboard**
+  - Total de usuários cadastrados
+  - Total de recursos cadastrados
+  - Gráfico de recursos por tipo
+  - Últimos usuários e recursos criados
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- [Python 3.13](https://www.python.org/)
+- [Django 5.2](https://www.djangoproject.com/)
+- SQLite (banco de dados padrão do Django)
+- Bootstrap 5 (frontend)
+- Chart.js (gráficos no dashboard)
+
+---
+
+## ⚙️ Como Rodar o Projeto
+
+1. **Clonar o repositório**
+   ```bash
+   git clone https://github.com/AtruDev/Projeto_Wayne.git
+   cd Projeto_Wayne/wayne
+
 
 ### 2. Criara e ativar o ambiente virtual
 - python -m venv venv

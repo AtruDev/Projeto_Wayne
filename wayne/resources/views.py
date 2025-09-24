@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Resource
 from .forms import ResourceForm
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def listar_recursos(request):
     recursos = Resource.objects.all()
     return render(request, 'resources/listar.html', {'recursos': recursos})
