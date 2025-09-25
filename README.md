@@ -64,3 +64,14 @@ Sistema desenvolvido em **Django** para gerenciamento de recursos e usuários, c
 
 ### Acesse:
 http://127.0.0.1:8000/
+
+## Screenshots
+
+### Tela de Login
+![Login](images/login.png)
+
+### Dashboard
+![Dashboard](images/dashboard.png)
+
+### Listagem de Recursos
+![Recursos](images/listar_recursos.png)
