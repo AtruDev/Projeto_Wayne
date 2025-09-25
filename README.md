@@ -44,7 +44,7 @@ Sistema desenvolvido em **Django** para gerenciamento de recursos e usuários, c
    cd Projeto_Wayne/wayne
 
 
-### 2. Criara e ativar o ambiente virtual
+### 2. Criar e ativar o ambiente virtual
 - python -m venv venv
 - venv\Scripts\activate    # Windows
 - source venv/bin/activate # Linux/macOS
