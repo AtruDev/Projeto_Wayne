@@ -41,7 +41,7 @@ Sistema desenvolvido em **Django** para gerenciamento de recursos e usuários, c
 1. **Clonar o repositório**
    ```bash
    git clone https://github.com/AtruDev/Projeto_Wayne.git
-   cd Projeto_Wayne/wayne
+   cd Projeto_Wayne
 
 
 ### 2. Criar e ativar o ambiente virtual
