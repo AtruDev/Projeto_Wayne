@@ -8,7 +8,7 @@ Sistema desenvolvido em **Django** para gerenciamento de recursos e usuários, c
 
 - 🔐 **Autenticação de usuários**
   - Login e logout seguros
-  - Controle de permissões por papel (`admin`, `user`)
+  - Controle de permissões por papel (`admin`, `gerente`)
 
 - 📦 **Gestão de Recursos**
   - Criar, listar, editar e deletar recursos
@@ -45,12 +45,15 @@ Sistema desenvolvido em **Django** para gerenciamento de recursos e usuários, c
 
 
 ### 2. Criar e ativar o ambiente virtual
-- python -m venv venv
-- venv\Scripts\activate    # Windows
+- python -m venv venv 
+- ./venv/Scripts/activate.ps1    # Windows(powershell)
 - source venv/bin/activate # Linux/macOS
 
 ### 3. Instalar dependências
 - pip install -r requirements.txt
+
+### 4. ir para pasta principal
+- cd wayne
 
 ### 4. Rodar migrações
 
@@ -63,15 +66,12 @@ Sistema desenvolvido em **Django** para gerenciamento de recursos e usuários, c
 - python manage.py runserver
 
 ### Acesse:
-http://127.0.0.1:8000/
+http://127.0.0.1:8000/admin
 
-## Screenshots
+### 7. mude o cargo 
+ 
+mude o cargo do seu superuser para admin assim tendo acesso total
 
-### Tela de Login
-![Login](images/login.png)
+### Acesse:
 
-### Dashboard
-![Dashboard](images/dashboard.png)
-
-### Listagem de Recursos
-![Recursos](images/listar_recursos.png)
+http://127.0.0.1:8000
